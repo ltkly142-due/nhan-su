@@ -1,0 +1,123 @@
+{% extends "DSNV_NVNS.html" %}
+{% load static %}
+
+{% block title %}Sửa hồ sơ nhân viên{% endblock %}
+{% block header_title %}Sửa hồ sơ nhân viên{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+  <form enctype="multipart/form-data">
+    <div class="row mb-4">
+      <!-- Ảnh đại diện -->
+      <div class="col-md-3 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="img-fluid rounded-circle mb-3" width="150">
+        <h5 class="fw-bold mb-1">Nguyễn Văn A</h5>
+        <span class="text-muted d-block mb-2">Mã NV: NV001</span>
+        <div class="mt-2">
+          <select class="form-select">
+            <option value="Đang làm việc" selected>Đang làm việc</option>
+            <option value="Nghỉ việc">Nghỉ việc</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Thông tin cá nhân -->
+      <div class="col-md-9">
+        <h5 class="fw-bold text-secondary border-bottom pb-2">Thông tin cá nhân</h5>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Họ và tên</label>
+            <input type="text" class="form-control" value="Nguyễn Văn A">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Ngày sinh</label>
+            <input type="date" class="form-control" value="1990-03-12">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">CCCD</label>
+            <input type="text" class="form-control" value="012345678900">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Giới tính</label>
+            <select class="form-select">
+              <option value="Nam" selected>Nam</option>
+              <option value="Nữ">Nữ</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Email công việc</label>
+            <input type="email" class="form-control" value="vana@khnet.vn">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" value="0987 654 321">
+          </div>
+        </div>
+
+        <!-- Thông tin công việc -->
+        <h5 class="fw-bold text-secondary border-bottom pb-2 mt-4">Thông tin công việc</h5>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Phòng ban</label>
+            <input type="text" class="form-control" value="Kinh doanh">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Chức vụ</label>
+            <input type="text" class="form-control" value="Nhân viên kinh doanh">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Ngày vào làm</label>
+            <input type="date" class="form-control" value="2020-02-01">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Loại hợp đồng</label>
+            <select class="form-select">
+              <option value="Toàn thời gian" selected>Toàn thời gian</option>
+              <option value="Bán thời gian">Bán thời gian</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Người quản lý trực tiếp</label>
+            <input type="text" class="form-control" value="Trần Thị B">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Lương cơ bản</label>
+            <input type="number" class="form-control" value="15000000">
+          </div>
+        </div>
+
+        <!-- Hồ sơ nhân viên -->
+        <h5 class="fw-bold text-secondary border-bottom pb-2 mt-4">Hồ sơ nhân viên</h5>
+        <div class="mb-3">
+          <label class="form-label">CV hiện tại</label><br>
+          <a href="#" class="text-decoration-none">
+            <i class="bi bi-file-earmark-text me-1"></i> NguyenVanA_CV.pdf
+          </a>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Thay thế hoặc tải lên CV mới</label>
+          <input type="file" class="form-control" accept=".pdf,.doc,.docx">
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút thao tác -->
+    <div class="text-end">
+      <a href="{% url 'NVNS_dsnv' %}" class="btn btn-outline-secondary me-2">
+        <i class="bi bi-arrow-left me-1"></i> Quay lại
+      </a>
+      <button type="button" class="btn btn-primary">
+        <i class="bi bi-check-lg me-1"></i> Lưu thay đổi
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

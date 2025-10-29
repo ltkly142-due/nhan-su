@@ -1,0 +1,59 @@
+{% extends "trangchu_chung.html" %}
+{% load static %}
+
+{% block title %}Quản lý hợp đồng - Trưởng phòng nhân sự{% endblock %}
+{% block sidebar %}
+<nav class="nav flex-column mt-3">
+  <a class="nav-link" href="#"><i class="bi bi-house-door me-2"></i> Trang chủ</a>
+  <a class="nav-link" href="#"><i class="bi bi-graph-up-arrow me-2"></i> Báo cáo nhân sự</a>
+  <a class="nav-link" href="#"><i class="bi bi-people me-2"></i> Danh sách nhân viên</a>
+  <a class="nav-link active" href="#"><i class="bi bi-file-earmark-text me-2"></i> Quản lý hợp đồng lao động</a>
+  <a class="nav-link" href="#"><i class="bi bi-calendar-check me-2"></i> Duyệt bảng công</a>
+  <a class="nav-link" href="#"><i class="bi bi-cash-stack me-2"></i> Bảng lương</a>
+  <a class="nav-link" href="#"><i class="bi bi-calendar2-check me-2"></i> Duyệt nghỉ phép</a>
+  <a class="nav-link" href="#"><i class="bi bi-box-arrow-right me-2"></i> Đăng xuất</a>
+</nav>
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h4><i class="bi bi-file-earmark-text me-2"></i>Danh sách hợp đồng lao động</h4>
+
+  <!-- Ô tìm kiếm -->
+  <form class="d-flex mb-3 mt-3" role="search">
+    <input class="form-control me-2" type="search" placeholder="Tìm theo tên, mã NV, loại hợp đồng..." aria-label="Search">
+    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+  </form>
+
+  <!-- Bảng hợp đồng -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Mã HĐ</th>
+            <th>Tên nhân viên</th>
+            <th>Loại hợp đồng</th>
+            <th>Ngày ký</th>
+            <th>Ngày hết hạn</th>
+            <th>Trạng thái</th>
+            <th class="text-center">Xem chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HD001</td>
+            <td>Nguyễn Văn A</td>
+            <td>Toàn thời gian</td>
+            <td>01/01/2023</td>
+            <td>01/01/2025</td>
+            <td><span class="badge bg-success">Còn hiệu lực</span></td>
+            <td class="text-center">
+              <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

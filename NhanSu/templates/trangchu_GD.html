@@ -1,0 +1,22 @@
+{% extends "trangchu_chung.html" %}
+
+{% block title %}Trang chủ Giám đốc{% endblock %}
+
+{% block sidebar %}
+  {% include "sidebar_GD.html" %}
+{% endblock %}
+
+{% block header_title %}Xin chào Giám đốc{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Tổng nhân viên</h6><h3 class="fw-bold">128</h3></div></div>
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Phòng ban hoạt động</h6><h3 class="fw-bold">7</h3></div></div>
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Hợp đồng chờ ký</h6><h3 class="fw-bold text-warning">2</h3></div></div>
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Hiệu suất công ty</h6><h3 class="fw-bold text-success">92%</h3></div></div>
+</div>
+
+<h5 class="fw-bold mt-5 mb-3 text-uppercase text-secondary">Thông báo điều hành</h5>
+<div class="notification"><strong>[05/10/2025]</strong> Duyệt báo cáo lương tháng 9 từ phòng nhân sự.</div>
+<div class="notification"><strong>[04/10/2025]</strong> Chuẩn bị họp chiến lược quý IV vào ngày 10/10.</div>
+{% endblock %}

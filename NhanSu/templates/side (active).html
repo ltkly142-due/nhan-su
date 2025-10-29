@@ -1,0 +1,33 @@
+{% block sidebar %}
+<nav class="nav flex-column mt-3">
+  <!-- Trang chủ -->
+  <a class="nav-link {% if active_page == 'home' %}active{% endif %}" href="{% url 'GD_dashboard' %}">
+    <i class="bi bi-house-door me-2"></i> Trang chủ
+  </a>
+
+  <!-- Báo cáo nhân sự -->
+  <a class="nav-link {% if active_page == 'baocao' %}active{% endif %}" href="{% url 'GD_baocao' %}">
+    <i class="bi bi-graph-up-arrow me-2"></i> Báo cáo nhân sự
+  </a>
+
+  <!-- Danh sách nhân viên -->
+  <a class="nav-link {% if active_page == 'nhanvien' %}active{% endif %}" href="{% url 'GD_dsnv' %}">
+    <i class="bi bi-people me-2"></i> Danh sách nhân viên
+  </a>
+
+  <!-- Quản lý hợp đồng -->
+  <a class="nav-link {% if active_page == 'hopdong' %}active{% endif %}" href="{% url 'GD_hopdong' %}">
+    <i class="bi bi-file-earmark-text me-2"></i> Quản lý hợp đồng
+  </a>
+
+  <!-- Duyệt bảng lương -->
+  <a class="nav-link {% if active_page == 'bangluong' %}active{% endif %}" href="{% url 'GD_bangluong' %}">
+    <i class="bi bi-cash-stack me-2"></i> Duyệt bảng lương
+  </a>
+
+  <!-- Đăng xuất -->
+  <a class="nav-link" href="{% url 'logout' %}">
+    <i class="bi bi-box-arrow-right me-2"></i> Đăng xuất
+  </a>
+</nav>
+{% endblock %}

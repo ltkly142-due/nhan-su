@@ -1,0 +1,35 @@
+{% extends "trangchu_chung.html" %}
+
+{% block title %}Trang chủ Trưởng phòng nhân sự{% endblock %}
+
+{% block sidebar %}
+<nav class="nav flex-column mt-3">
+  <a class="nav-link active" href="#"><i class="bi bi-house-door me-2"></i> Trang chủ</a>
+  <a class="nav-link" href="#"><i class="bi bi-graph-up-arrow me-2"></i> Báo cáo nhân sự</a>
+  <a class="nav-link" href="{% url 'TP_dsnv' %}">
+  <i class="bi bi-people me-2"></i> Danh sách nhân viên
+  </a>
+  <a class="nav-link" href="{% url 'qlhd_tp' %}">
+  <i class="bi bi-people me-2"></i> Quản lý hợp đồng lao động
+  </a>
+  <a class="nav-link" href="#"><i class="bi bi-calendar-check me-2"></i> Duyệt bảng công</a>
+  <a class="nav-link" href="#"><i class="bi bi-cash-stack me-2"></i> Bảng lương</a>
+  <a class="nav-link" href="#"><i class="bi bi-calendar2-check me-2"></i> Duyệt nghỉ phép</a>
+  <a class="nav-link" href="#"><i class="bi bi-box-arrow-right me-2"></i> Đăng xuất</a>
+</nav>
+{% endblock %}
+
+{% block header_title %}Xin chào, Trưởng phòng nhân sự{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Tổng nhân viên</h6><h3 class="fw-bold">128</h3></div></div>
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Đơn nghỉ chờ duyệt</h6><h3 class="fw-bold text-danger">4</h3></div></div>
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Hợp đồng hiệu lực</h6><h3 class="fw-bold">56</h3></div></div>
+  <div class="col-md-3"><div class="card card-stat p-3 shadow-sm"><h6 class="text-muted">Đi làm đúng giờ</h6><h3 class="fw-bold text-success">96%</h3></div></div>
+</div>
+
+<h5 class="fw-bold mt-5 mb-3 text-uppercase text-secondary">Thông báo nội bộ</h5>
+<div class="notification"><strong>[05/10/2025]</strong> Nộp báo cáo chấm công tháng 9 trước 7/10.</div>
+<div class="notification"><strong>[04/10/2025]</strong> Cập nhật kế hoạch tuyển dụng quý IV.</div>
+{% endblock %}

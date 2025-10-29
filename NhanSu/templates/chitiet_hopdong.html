@@ -1,0 +1,48 @@
+{% extends "trangchu_chung.html" %}
+{% load static %}
+
+{% block title %}Chi tiết hợp đồng{% endblock %}
+{% block sidebar %}
+<nav class="nav flex-column mt-3">
+  <a class="nav-link" href="#"><i class="bi bi-house-door me-2"></i> Trang chủ</a>
+  <a class="nav-link" href="#"><i class="bi bi-graph-up-arrow me-2"></i> Báo cáo nhân sự</a>
+  <a class="nav-link" href="#"><i class="bi bi-people me-2"></i> Danh sách nhân viên</a>
+  <a class="nav-link active" href="#"><i class="bi bi-file-earmark-text me-2"></i> Quản lý hợp đồng lao động</a>
+  <a class="nav-link" href="#"><i class="bi bi-calendar-check me-2"></i> Quản lý chấm công</a>
+  <a class="nav-link" href="#"><i class="bi bi-cash-coin me-2"></i> Tính lương</a>
+  <a class="nav-link" href="#"><i class="bi bi-box-arrow-right me-2"></i> Đăng xuất</a>
+</nav>
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h4><i class="bi bi-file-earmark-text me-2"></i>Chi tiết hợp đồng lao động</h4>
+  <hr>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <p><strong>Mã hợp đồng:</strong> HD002</p>
+          <p><strong>Nhân viên:</strong> Trần Thị B</p>
+          <p><strong>Chức vụ:</strong> Kế toán viên</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Loại hợp đồng:</strong> Hợp đồng 1 năm</p>
+          <p><strong>Ngày ký:</strong> 01/06/2023</p>
+          <p><strong>Ngày hết hạn:</strong> 31/05/2024</p>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <p><strong>Trạng thái:</strong> <span class="badge bg-danger">Hết hạn</span></p>
+        <p><strong>Ghi chú:</strong> Cần ký lại hợp đồng mới trong tháng 5/2024.</p>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <a href="{% url 'chinhsua_hopdong' %}" class="btn btn-warning me-2"><i class="bi bi-pencil"></i> Chỉnh sửa</a>
+        <a href="{% url 'qlhd_nvns' %}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Quay lại</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

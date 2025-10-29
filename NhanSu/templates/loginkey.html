@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tài khoản bị khóa — Hệ thống Nhân sự</title>
+  <style>
+    :root {
+      --color-gold: #be9334;
+      --color-gray: #5c5958;
+      --color-white: #ffffff;
+      --color-bg: #f5f5f5;
+      --color-danger: #c0392b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      background: var(--color-bg);
+      color: var(--color-gray);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-wrapper {
+      width: 100%;
+      max-width: 400px;
+      background: var(--color-white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      text-align: center;
+    }
+    .login-logo {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .login-logo img {
+      max-width: 120px;
+      height: auto;
+    }
+    .login-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-gold);
+    }
+    .error-box {
+      border: 1px solid var(--color-danger);
+      background: #fceaea;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      color: var(--color-danger);
+      font-weight: bold;
+    }
+    .help-links {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .help-links a {
+      color: var(--color-gray);
+      text-decoration: none;
+    }
+    .help-links a:hover {
+      text-decoration: underline;
+    }
+    .bg-decor {
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: var(--color-gold);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+    .bg-decor2 {
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 120px;
+      height: 120px;
+      background: var(--color-gray);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+    .btn-back {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--color-gold);
+      color: var(--color-white);
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .btn-back:hover {
+      background: #a6792d;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="bg-decor"></div>
+    <div class="bg-decor2"></div>
+
+    <div class="login-logo">
+      <img src="https://w.ladicdn.com/642fbad2e5a23b001274da04/logo-cty-khai-hoan-net-20230908150754-o9re0.png"
+           alt="Logo Khai Hoan Net">
+    </div>
+
+    <div class="login-title">Tài khoản bị khóa</div>
+    <div class="error-box">
+      Tài khoản của bạn hiện đang bị khóa.<br>
+      Vui lòng liên hệ với quản trị viên để được hỗ trợ.
+    </div>
+
+    <a href="/dangnhap/" class="btn-back">Quay lại đăng nhập</a>
+
+    <div class="help-links">
+      <a href="#">Liên hệ quản trị</a>
+    </div>
+  </div>
+</body>
+</html>
