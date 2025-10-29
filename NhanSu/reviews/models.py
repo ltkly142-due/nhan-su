@@ -202,4 +202,5 @@ class ChiTietLuong(models.Model):
     NgayPhatHanh = models.DateField('Ngày phát hành', null=True, blank=True)
 
     def __str__(self):
-        return f'Luong NV:{self.nhanVien.maNhanVien} - {self.bangLuongThang.thang}/{self.bangLuongThangt.nam}'
+        return f'Luong NV:{self.NhanVien.MaNhanVien} - {self.BangLuongThang.thang}/{self.BangLuongThang.nam}'
+
