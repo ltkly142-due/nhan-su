@@ -1,4 +1,3 @@
-# hr/models.py
 from django.db import models
 from django.core.validators import MinValueValidator, RegexValidator, EmailValidator
 from django.core.exceptions import ValidationError
@@ -7,50 +6,50 @@ from django.utils import timezone
 
 # ----- choices -----
 GIOITINH_CHOICES = [
-    ('Nam', 'Nam'),
-    ('Nữ', 'Nữ'),
-    ('Khác', 'Khác'),
+    ('NAM', 'Nam'),
+    ('NU', 'Nữ'),
+    ('KHAC', 'Khác'),
 ]
 
 NHANVIEN_TRANGTHAI = [
-    ('Đang làm', 'Đang làm'),
-    ('Thử việc', 'Thử việc'),
-    ('Tạm nghỉ', 'Tạm nghỉ'),
-    ('Đã nghỉ', 'Đã nghỉ'),
+    ('DANG_LAM', 'Đang làm'),
+    ('THU_VIEC', 'Thử việc'),
+    ('TAM_NGHI', 'Tạm nghỉ'),
+    ('DA_NGHI', 'Đã nghỉ'),
 ]
 
 HOPDONG_TRANGTHAI = [
-    ('Hiệu lực', 'Hiệu lực'),
-    ('Hết hạn', 'Hết hạn'),
-    ('Lưu trữ', 'Lưu trữ'),
+    ('HIEU_LUC', 'Hiệu lực'),
+    ('HET_HAN', 'Hết hạn'),
+    ('LUU_TRU', 'Lưu trữ'),
 ]
 
 NGHIPHEP_LOAI = [
-    ('Phep nam', 'Phep nam'),
-    ('Nghi om', 'Nghi om'),
-    ('Nghi Thai San', 'Nghi Thai San'),
-    ('Cong Tac', 'Cong Tac'),
-    ('Khac', 'Khac'),
+    ('PHEP_NAM', 'Phép năm'),
+    ('NGHI_OM', 'Nghỉ ốm'),
+    ('NGHI_THAI_SAN', 'Nghỉ Thai Sản'),
+    ('CONG_TAC', 'Công tác'),
+    ('KHAC', 'Khác'),
 ]
 
 DON_TRANGTHAI = [
-    ('Cho duyet', 'Cho duyet'),
-    ('Da duyet', 'Da duyet'),
-    ('Tu choi', 'Tu choi'),
+    ('CHO_DUYET', 'Chờ duyệt'),
+    ('DA_DUYET', 'Đã duyệt'),
+    ('TU_CHOI', 'Từ chối'),
 ]
 
-TAIKHOAN_ROLES = [
-    ('Admin', 'Admin'),
-    ('HR', 'HR'),
-    ('GiamDoc', 'GiamDoc'),
-    ('NhanVien', 'NhanVien'),
-]
+# TAIKHOAN_ROLES = [
+#     ('Admin', 'Admin'),
+#     ('HR', 'HR'),
+#     ('GiamDoc', 'GiamDoc'),
+#     ('NhanVien', 'NhanVien'),
+# ]
 
 BANGCONG_TRANGTHAI = [
-    ('Gui duyet', 'Gui duyet'),
-    ('Cho duyet', 'Cho duyet'),
-    ('Da duyet', 'Da duyet'),
-    ('Tu choi', 'Tu choi'),
+    ('GUI_DUYET', 'Gửi duyệt'),
+    ('CHO_DUYET', 'Chờ duyệt'),
+    ('DA_DUYET', 'Đã duyệt'),
+    ('TU_CHOI', 'Từ chối'),
 ]
 
 
@@ -61,10 +60,10 @@ code_validator = RegexValidator(r'^[A-Za-z0-9_\-]+$', 'Chỉ được dùng ch�
 
 # ----- Models -----
 class PhongBan(models.Model):
-    maPB = models.CharField('MaPB', max_length=20, unique=True, validators=[code_validator])
-    tenPhongBan = models.CharField('TenPhongBan', max_length=100)
-    vaiTroPB = models.CharField('VaiTroPB', max_length=100, null=True, blank=True)
-    truongPhong = models.ForeignKey(
+    MaPB = models.CharField('Mã Phòng Ban', max_length=20, unique=True, validators=[code_validator])
+    TenPhongBan = models.CharField('Tên Phòng Ban', max_length=100)
+    VaiTroPB = models.CharField('VaiTroPB', max_length=100, null=True, blank=True)
+    TruongPhong = models.ForeignKey(
         'NhanVien',
         on_delete=models.SET_NULL,
         null=True,
@@ -77,35 +76,36 @@ class PhongBan(models.Model):
         db_table = 'PhongBan'
 
     def __str__(self):
-        return f'{self.tenPhongBan} ({self.maPB})'
+        return f'{self.TenPhongBan} ({self.MaPB})'
 
 
 class ChucVu(models.Model):
-    tenChucVu = models.CharField('TenChucVu', max_length=100, unique=True)
-    luong = models.DecimalField('Luong', max_digits=18, decimal_places=2, validators=[MinValueValidator(0)], null=True, blank=True)
+    ChucVu = models.CharField('Tên Chức Vụ', max_length=100, unique=True)
+    Luong = models.DecimalField('Luong', max_digits=18, decimal_places=2, validators=[MinValueValidator(0)], null=True, blank=True)
 
     class Meta:
         db_table = 'ChucVu'
 
     def __str__(self):
         return self.tenChucVu
-
+        
+# CLASS PHÒNG BAN CHỨC VỤ
 
 class NhanVien(models.Model):
-    maNhanVien = models.CharField('MaNhanVien', max_length=20, unique=True, validators=[code_validator])
-    hoTen = models.CharField('HoTen', max_length=100)
-    ngaySinh = models.DateField('NgaySinh', null=True, blank=True)
-    gioiTinh = models.CharField('GioiTinh', max_length=10, choices=GIOITINH_CHOICES, null=True, blank=True)
-    diaChi = models.CharField('DiaChi', max_length=255, null=True, blank=True)
-    soDienThoai = models.CharField('SoDienThoai', max_length=11, null=True, blank=True, validators=[phone_validator])
-    cccd = models.CharField('CCCD', max_length=20, unique=True, null=True, blank=True)
-    email = models.EmailField('Email', max_length=120, unique=True, null=True, blank=True, validators=[EmailValidator()])
-    trangThai = models.CharField('TrangThai', max_length=30, choices=NHANVIEN_TRANGTHAI, default='Đang làm')
-    ngayVao = models.DateField('NgayVao', null=True, blank=True)
+    MaNhanVien = models.CharField('MaNhanVien', max_length=20, unique=True, validators=[code_validator])
+    HoTen = models.CharField('HoTen', max_length=100)
+    NgaySinh = models.DateField('NgaySinh', null=True, blank=True)
+    GioiTinh = models.CharField('GioiTinh', max_length=10, choices=GIOITINH_CHOICES, null=True, blank=True)
+    DiaChi = models.CharField('DiaChi', max_length=255, null=True, blank=True)
+    SoDienThoai = models.CharField('SoDienThoai', max_length=11, null=True, blank=True, validators=[phone_validator])
+    CCCD = models.CharField('CCCD', max_length=20, unique=True, null=True, blank=True)
+    Email = models.EmailField('Email', max_length=120, unique=True, null=True, blank=True, validators=[EmailValidator()])
+    TrangThai = models.CharField('TrangThai', max_length=30, choices=NHANVIEN_TRANGTHAI, default='Đang làm')
+    NgayVao = models.DateField('NgayVao', null=True, blank=True)
     # Liên kết
-    trinhDo = models.ForeignKey('TrinhDoHocVan', on_delete=models.SET_NULL, null=True, blank=True, related_name='nhanvien_trinhdo')
-    phongBan = models.ForeignKey('PhongBan', on_delete=models.PROTECT, related_name='nhanviens', verbose_name='PhongBan')
-    chucVu = models.ForeignKey('ChucVu', on_delete=models.PROTECT, related_name='nhanviens', verbose_name='ChucVu')
+    TrinhDo = models.ForeignKey('TrinhDoHocVan', on_delete=models.SET_NULL, null=True, blank=True, related_name='nhanvien_trinhdo')
+    PhongBan = models.ForeignKey('PhongBan', on_delete=models.PROTECT, related_name='nhanviens', verbose_name='PhongBan')
+    ChucVu = models.ForeignKey('ChucVu', on_delete=models.PROTECT, related_name='nhanviens', verbose_name='ChucVu')
 
     class Meta:
         db_table = 'NhanVien'
@@ -286,3 +286,4 @@ class ChiTietLuong(models.Model):
 
     def __str__(self):
         return f'Luong NV:{self.nhanVien.maNhanVien} - {self.bangLuongTongQuat.thang}/{self.bangLuongTongQuat.nam}'
+
